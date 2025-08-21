@@ -68,3 +68,7 @@ def tc_log(request,plineid=""):
         
 
     return HttpResponse(status=404)
+
+def home_view(request):
+
+    return render(request,"home.html")
