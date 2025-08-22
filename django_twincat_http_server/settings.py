@@ -19,6 +19,7 @@ with open(f'{BASE_DIR}/etc/config.yml', 'r') as yaml_file:
     config_dict = yaml.safe_load(yaml_file)
     
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -27,9 +28,9 @@ with open(f'{BASE_DIR}/etc/config.yml', 'r') as yaml_file:
 SECRET_KEY = config_dict['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config_dict['DEBUG']
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config_dict['ALLOWED_HOSTS']
 
 
 # Application definition
@@ -116,9 +117,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/'static'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    "/var/www/static/",
+    BASE_DIR/ "twincat_logger/static"
 ]
 
 # Default primary key field type
