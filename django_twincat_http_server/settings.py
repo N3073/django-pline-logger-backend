@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'twincat_logger'
+    'twincat_logger',
+    'slide_app',
 ]
 
 MIDDLEWARE = [
@@ -119,9 +120,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR/'static'
 STATICFILES_DIRS = [
-    BASE_DIR/ "twincat_logger/static"
+    BASE_DIR/ "twincat_logger/static",
+    BASE_DIR/ "slide_app/static",
 ]
-
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

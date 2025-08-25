@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django_twincat_http_server.utils import debug_printer
+import django_twincat_http_server.settings as settings
 import json
 from .models import *
 def get_client_ip(request):
@@ -16,6 +18,7 @@ def get_client_ip(request):
 
 @csrf_exempt
 def tc_log(request,plineid=""):
+    printer = debug_printer(settings.DEBUG)
     try:
         pline = ProductionLine.objects.get(id=plineid)
     except:
@@ -37,7 +40,7 @@ def tc_log(request,plineid=""):
                             message_entry = LogMessage(production_line=pline,message_type=incoming_data["message_type"],message_text=incoming_data["message_text"],sender_ip=ip)
                             message_entry.full_clean()
                             message_entry.save()
-                            print(str(message_entry))
+                            printer(str(message_entry))
                             return HttpResponse(status=204)
                         except Exception as e:
                             #print(e.message)
@@ -56,7 +59,7 @@ def tc_log(request,plineid=""):
                                     sender_ip=ip
                                     
                                     )
-                                print(str(data_entry))
+                                printer(str(data_entry))
                                 data_entry.full_clean()
                                 data_entry.save()
                             return HttpResponse(status=204)
