@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        {% load static %}
+        <title>Slide home</title>
+        
+  </head>
+  <body>
+    
+
+    <h1>Slides view</h1>
+    {% if slides %}
+        {% for slide in slides %}
+        <a class="slide-link" href="/slide_app/{{slide.id}}" target="_blank">{{slide.title}}</a>
+        {% endfor %}
+    {% endif %}
+  </body>
+</html>

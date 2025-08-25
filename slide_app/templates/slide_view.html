@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        {% load static %}
+        <title>Slide view</title>
+        
+  </head>
+  <body>
+    
+
+    
+    {% if slide %}
+        <h1>{{slide.title}}</h1>
+        <img src="/media/{{slide.image}}" alt="{{slide.title}}">
+        
+    {% endif %}
+  </body>
+</html>

@@ -3,3 +3,4 @@ numpy
 psycopg2
 pyyaml
 gunicorn
+Pillow
